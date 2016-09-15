@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Error</title>
+    </head>
+
+    <style>
+        body {
+            font: 15px Consolas, 'Ubuntu Mono', 'Courier New', monospace
+        }
+
+        h1 {
+            color: #F00
+        }
+
+        #file {
+            font-weight: bold;
+            color: #0073e6
+        }
+
+        #info {
+            font-size: 11px;
+            font-style: italic
+        }
+    </style>
+
+    <body>
+        <h1>{TYPE}</h1>
+
+        {MSG} in <span id="file">{FILE}</span>
+        on line <strong>{LINE}</strong><br><br>
+        <span id="info">
+            Error number: {ERROR_NUMBER};
+            error_reporting: {ERROR_REPORTING};
+            time: {TIME};
+            via: {VIA}
+        </span>
+    </body>
+</html>
