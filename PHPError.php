@@ -43,13 +43,13 @@ class PHPError {
 
     public function showError() {
 
+        $error_reporting = error_reporting();
+
         // Erros suprimidos com @ não serão mostrados nem logados
-        if (!(error_reporting() && $this->number)) {
+        if (!$error_reporting || !$this->number) {
             return;
         }
 
-        //$error_reporting = ini_get('error_reporting');
-        $error_reporting = error_reporting();
         $time = $_SERVER['REQUEST_TIME_FLOAT'];
 
         switch ($this->number) {
