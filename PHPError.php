@@ -11,6 +11,7 @@ class PHPError {
     public $file;
     public $line;
     public $via;
+    public $showStackTrace = true;
 
     public function __construct() {
         register_shutdown_function(function() {
@@ -56,6 +57,7 @@ class PHPError {
             case E_ERROR:
                 $code = 'E_ERROR';
                 $type = 'Fatal error';
+                $this->showStackTrace = false;
                 break;
 
             case E_WARNING:
@@ -131,6 +133,12 @@ class PHPError {
             default:
                 $code = 'UNKNOWN';
                 $type = 'Unknown error';
+        }
+
+        if ($this->showStackTrace) {
+            $e = new \Exception();
+            $stack = $e->getTraceAsString();
+            $this->msg .= "\n\n{$stack}";
         }
 
         // Limpar todo o erro nativo do PHP
