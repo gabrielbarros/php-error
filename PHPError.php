@@ -165,4 +165,7 @@ class PHPError {
     }
 }
 
-new PHPError();
+// Não mostrar erros customizados pela linha de comando
+if (PHP_SAPI !== 'cli') {
+    new PHPError();
+}
